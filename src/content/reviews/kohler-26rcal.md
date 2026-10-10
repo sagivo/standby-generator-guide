@@ -31,5 +31,21 @@ Bundled kits pair the generator with Kohler's 200A RXT automatic transfer switch
 - **Dealer network:** Smaller than Generac's. Confirm a certified installer near you before buying.
 - **Price:** Usually a premium over the equivalent Guardian. You're paying for the enclosure and engineering.
 
+## 26RCAL vs Guardian 26kW: the flagship decision
+
+This is the closest head-to-head in home standby. The [Generac Guardian 26kW](/generators/generac-guardian-26kw/) counters with a denser dealer network, usually lower street pricing, and an unlimited-hours warranty. The Kohler counters with the composite enclosure, PowerBoost starting, and a reputation for later-life reliability. On propane (full 26 kW for both), it's nearly a coin flip decided by your installer. On natural gas, note both derate — Kohler to ~24 kW — and re-run your [load calculation](/tools/kw-size-calculator/). Read the full [Generac vs Kohler reliability](/posts/generac-vs-kohler-reliability/) analysis before deciding.
+
+## Who shouldn't buy it
+
+Anyone whose load calc lands under 22 kW — you're paying flagship money for capacity you'll never use, and the [20RESCL](/generators/kohler-20rescl/) is the same Kohler quality for less. Also anyone without a certified Kohler installer nearby: confirm service before you buy the badge.
+
+## Installation considerations
+
+At flagship size, plan for freight delivery and a full-day electrical install plus gas plumbing on a separate visit. The composite enclosure is a genuine advantage on coastal installs — no paint to bubble, no steel to rust — but confirm your setback distances anyway; the unit still needs 18+ inches of breathing room per code and more for service access. Verify the bundled kit includes the 200A RXT ATS (listings vary), and have the installer register the warranty and demonstrate OnCue Plus before sign-off. Price the whole project with the [installation cost estimator](/tools/install-cost-estimator/).
+
+## Long-term outlook
+
+Kohler's conservative engineering — cast-iron liners, overbuilt transfer switches, composite enclosure — is aimed at the second decade of ownership, and field data suggests it gets there: ATS and fuel-system failures arrive years later than the industry average. The trade is the 5-year/2,000-hour warranty cap and a thinner dealer network. Maintain it annually ([maintenance checklist](/posts/standby-generator-maintenance/)), and the 26RCAL is a 20-year appliance. See [Generac vs Kohler reliability](/posts/generac-vs-kohler-reliability/) for the detailed failure timelines.
+
 [Check the price of the Kohler 26RCAL on Amazon](amazon:kohler-26rcal)
 
