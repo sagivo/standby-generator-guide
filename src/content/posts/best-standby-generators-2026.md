@@ -1,7 +1,7 @@
 ---
 title: "Best Standby Generators of 2026: 10 Whole-House Picks for Every Home"
 seoTitle: "Best Standby Generator 2026: 10 Whole-House Picks"
-description: "The best standby generator of 2026 is the Generac Guardian 26kW. Compare 10 whole-house picks from budget to flagship, with real kW ratings, fuel derates, noise and price tiers."
+description: "The best standby generator of 2026 is the Generac Guardian 26kW. Compare 10 whole-house picks with real kW ratings, fuel derates, noise and prices."
 pubDate: 2026-10-10
 updatedDate: 2026-10-10
 category: best
