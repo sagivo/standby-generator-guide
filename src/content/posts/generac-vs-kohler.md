@@ -55,6 +55,22 @@ Generac vs Kohler is the Ford vs Chevy of home standby. Generac sells more resid
 
 **Quietness.** The 20RESCL's 64 dB(A) exercise cycle is the quietest weekly self-test we've seen.
 
+## Model-by-model: where they actually compete
+
+The brands don't compete as abstractions — they compete at specific sizes. Here's how the lineups line up:
+
+**14 kW class:** Generac's Guardian 14kW vs. the [Champion 14kW aXis](/generators/champion-14kw-axis/) (Kohler doesn't play meaningfully here). Generac wins on network; Champion wins on quietness (62 dB(A)) and price.
+
+**20 kW class:** [Kohler 20RESCL](/generators/kohler-20rescl/) vs. Generac's 20kW offerings vs. [Cummins RS20A](/generators/cummins-rs20a/) vs. [Briggs & Stratton 20kW](/generators/briggs-stratton-20kw/). This is the most competitive bracket — four credible answers. Kohler's PowerBoost and 64 dB(A) exercise cycle stand out; Generac counters with price and availability.
+
+**22–24 kW class:** Generac owns this bracket outright — the [Guardian 22kW](/generators/generac-guardian-22kw/) and [24kW](/generators/generac-guardian-24kw/) have no direct Kohler equivalent at 22/24 (Kohler jumps from 20 to 26). If your load calc lands at 21–22 kW, Generac is the only badge in town. See the [22kW vs 24kW breakdown](/posts/generac-22kw-vs-24kw/).
+
+**26 kW class:** [Guardian 26kW](/generators/generac-guardian-26kw/) vs. [Kohler 26RCAL](/generators/kohler-26rcal/). Generac's flagship vs. Kohler's — the closest head-to-head in either lineup, and the comparison where Kohler's enclosure and PowerBoost advantages are most tangible.
+
+## Price reality
+
+At equivalent kW, Kohler typically costs a few hundred dollars more on the unit — smaller production scale, premium enclosure materials, dealer-heavy channel. Generac's scale shows up as lower street prices and more frequent promotions. But unit price is ~half the project ([installation cost breakdown](/posts/standby-generator-installation-cost/)), and installer labor doesn't care about the badge — so the all-in gap is smaller than the equipment gap suggests. Get quotes for both; the installer you trust matters more than the brand premium.
+
 ## The verdict
 
 Buy Generac for the network and the price. Buy Kohler for the build quality and the coast. And whichever you choose, buy the size your [kW calculation](/tools/kw-size-calculator/) says — brand loyalty never kept the lights on.
