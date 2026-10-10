@@ -33,5 +33,17 @@ The 24-volt starting system (double the cranking power of typical 12V setups) st
 - **Fuel:** 14 kW on propane, 12.5 kW on natural gas.
 - **ATS options:** 100A, 150A, or 200A aXis switches — match it to your panel.
 
+## The 10-year warranty in context
+
+Champion's 10-year limited warranty is double the industry standard 5 — and it's the single strongest reason to take this unit seriously beyond the price. Read the terms (they're straightforward), register the unit, and keep maintenance records. Combined with free lifetime tech support, it's the best ownership safety net in home standby. The catch, as always: warranty value depends on service access, so confirm installer support in your area.
+
+## Sizing honesty
+
+14 kW on propane, 12.5 kW on natural gas. For a 2,000 sq ft home on NG wanting whole-house coverage, that's not enough — see [what size generator for a 2,000 sq ft house](/posts/what-size-generator-2000-sq-ft-house/). Where the Champion 14kW shines is the honest 14 kW use case: essentials + one AC with intelligent load management, smaller homes, or budget projects where managed backup beats no backup. The aXis system stretches the 14 kW further than the number suggests, but it can't create watts that aren't there.
+
+## The aXis ecosystem
+
+The aXis transfer switch comes in 100A, 150A, and 200A versions — match it to your panel, not your aspirations. The platform's Power Line Carrier communication (signals over existing wiring, no extra control runs) makes retrofits cleaner than hardwired load-management systems. If you outgrow 14 kW later, the ATS and wiring transfer to a larger standby project — the infrastructure investment isn't wasted. And with the 10-year warranty plus free lifetime tech support, Champion's ownership story is the strongest in the class for buyers who keep equipment long-term.
+
 [Check the price of the Champion 14kW aXis on Amazon](amazon:champion-14kw-axis)
 
