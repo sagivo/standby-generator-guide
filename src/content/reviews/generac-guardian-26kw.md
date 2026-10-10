@@ -37,5 +37,13 @@ Expect around 67 dB(A) — you'll hear it, but it won't dominate the backyard. B
 - **Maintenance:** Annual oil/filter/plug service; the weekly exercise cycle is automatic.
 - **Battery:** Not included — a crank battery and preferably a [battery maintainer](/accessories/) are essential; dead batteries are the #1 no-start cause.
 
+## How it compares
+
+Against the [Guardian 24kW](/generators/generac-guardian-24kw/): 2 more kW, ~60 lb heavier, a few hundred dollars more. If your load calc is under 22 kW, save the money. Against the [Kohler 26RCAL](/generators/kohler-26rcal/): Generac wins on dealer network density and usually on price; Kohler wins on enclosure (corrosion-proof composite vs. aluminum) and PowerBoost motor starting. Read the [Generac vs Kohler reliability](/posts/generac-vs-kohler-reliability/) breakdown for the long-term picture.
+
+## Installation planning
+
+At 518 lb and 48.5" long, this is a two-person-plus-a-dolly delivery — confirm truck access to the pad site before ordering. The 200A service-entrance ATS means the electrician ties directly into your meter/main, which is cleaner than a subpanel setup but requires the utility to pull the meter during install (your installer coordinates this). Budget a full day for the electrical work plus a separate day for gas plumbing and startup testing. And verify your gas meter's capacity with the utility ahead of time — a 26 kW unit at full load wants serious gas flow, and an undersized meter is the most common install-day surprise.
+
 [Check the price of the Generac Guardian 26kW on Amazon](amazon:generac-guardian-26kw)
 
