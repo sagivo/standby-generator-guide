@@ -33,5 +33,17 @@ At 455 lb it's still freight delivery. Plan the pad location with your installer
 - **Maintenance:** Annual service kit; weekly exercise is automatic.
 - **Cross-shop:** Always price the [26kW Guardian](/generators/generac-guardian-26kw/) alongside — the gap is often smaller than you'd expect.
 
+## The efficiency story
+
+The 24kW deserves special mention for fuel economy: Generac's figures put it at ~203 cu-ft/hr of natural gas at full load — actually beating the 22kW's ~228 cu-ft/hr despite making more power. It's the most efficient air-cooled unit in its class, which matters if you expect long outage runs. See the full [fuel consumption breakdown](/posts/standby-generator-fuel-consumption/) for per-hour costs.
+
+## 22kW vs 24kW vs 26kW: the lineup logic
+
+Generac's three big air-cooled units overlap deliberately. The [22kW](/generators/generac-guardian-22kw/) is the volume seller for 2,000–2,500 sq ft homes. The 24kW is for homes where 22 feels tight — two AC zones, a workshop, an EV charger. The [26kW](/generators/generac-guardian-26kw/) is the no-compromises flagship. The price steps between them are small relative to the $10,000+ installed project, so buy the capacity your [load calculation](/tools/kw-size-calculator/) justifies, not the one your budget prefers. Undersizing is the only unfixable mistake here — read the [22kW vs 24kW head-to-head](/posts/generac-22kw-vs-24kw/) for the detailed call.
+
+## Maintenance schedule
+
+Annual oil and filter service (or every 150 hours), air filter and spark plugs per the manual interval, battery tested yearly and replaced proactively every 3–4 years — on a maintainer year-round if you want the #1 no-start cause eliminated. The weekly exercise cycle is automatic; verify via Mobile Link that it's actually running. Total DIY cost: ~$70–$95/year in parts. The full [maintenance checklist](/posts/standby-generator-maintenance/) covers the seasonal items most owners miss.
+
 [Check the price of the Generac Guardian 24kW on Amazon](amazon:generac-guardian-24kw)
 
