@@ -22,7 +22,7 @@ faq:
     a: "Air-cooled residential units typically last 15–25 years (2,000–3,000 running hours) with proper maintenance. Most of their life is standby, not running — the exercise cycles add up to only ~40 hours a year."
 ---
 
-A standby generator is insurance that has to work on the worst day of the year. Maintenance is what makes sure it does — and it's about an hour a year.
+A standby generator is insurance that has to work on the worst day of the year. Maintenance is what makes sure it does — and it's about an hour a year. (For brand-specific failure patterns and what maintenance prevents, see [Generac vs Kohler reliability](/posts/generac-vs-kohler-reliability/).)
 
 ## The annual checklist
 
@@ -44,6 +44,42 @@ A standby generator is insurance that has to work on the worst day of the year. 
 
 ## DIY vs. dealer service
 
-The annual service is genuinely DIY-able with a [maintenance kit](/accessories/) — oil, filters, and plugs are all accessible. But an annual dealer visit ($200–$400) buys a trained eye on the transfer switch, gas connections, and controller. Many owners DIY the basics and book a dealer every 2–3 years. Either way, keep receipts: warranty claims go smoother with a paper trail.
+The annual service is genuinely DIY-able with a [maintenance kit](/accessories/) — oil, filters, and plugs are all accessible. If you're still deciding on a unit, the [best standby generators of 2026](/posts/best-standby-generators-2026/) compares maintenance needs across models, and the [fuel consumption guide](/posts/standby-generator-fuel-consumption/) covers what the exercise cycle costs to run. But an annual dealer visit ($200–$400) buys a trained eye on the transfer switch, gas connections, and controller. Many owners DIY the basics and book a dealer every 2–3 years. Either way, keep receipts: warranty claims go smoother with a paper trail.
+
+## Seasonal checks (5 minutes each)
+
+**Spring:** After winter, walk the unit. Clear debris from the enclosure vents, check for rodent nesting (they love warm enclosures), verify the exercise cycle ran last week via the controller log or app. This is the ideal time for the annual oil service — do it before storm season, not during.
+
+**Summer:** In heat-wave regions, confirm intake and exhaust clearances are unobstructed — vegetation grows fast. If your area runs multi-day outages in summer, check the propane gauge monthly (or confirm NG service is normal). Glance at the app weekly during storm season.
+
+**Fall:** The critical one. Service the unit now if you skipped spring: oil, filters, plugs, battery test. Top off propane before winter pricing. Clear leaves from around the enclosure — wet leaf mats against vents are a real airflow problem. Confirm the exercise schedule hasn't been accidentally disabled (it happens more than you'd think after power blips).
+
+**Winter:** Keep snow and ice clear of the enclosure — at least 3 feet around, and the exhaust path fully open. Don't pile shoveled snow against it. If temperatures drop below the engine's cold-start rating, consider the factory cold-weather kit (battery warmer + oil heater); they're ~$100–$200 and cheap insurance in northern states.
+
+## When to call a pro instead of DIY
+
+DIY the consumables; call a dealer for:
+
+- **Any fault code you can't clear** with the manual's reset procedure. Repeated faults are the unit telling you something.
+- **Transfer switch issues** — anything involving the ATS is electrician territory, full stop.
+- **Gas smell, ever.** Shut it down, call the gas utility first, then your installer.
+- **Voltage irregularities** — flickering, brownouts on generator power. This is alternator or regulator territory.
+- **After any major outage run (100+ hours).** Treat it like a car's severe-service interval: oil change and full inspection, even if the annual isn't due.
+
+An annual dealer visit runs $200–$400 in most markets. Many owners alternate: DIY basics one year, dealer inspection the next. Either way, the paper trail matters — staple the receipts into the manual. Warranty claims with documentation sail through; without, they stall.
+
+## The 15-year ownership budget
+
+For planning purposes, a 20 kW-class unit costs roughly:
+
+| Item | Frequency | Typical cost |
+|---|---|---|
+| DIY maintenance kit (oil, filters, plugs) | Annual | $70–$95 |
+| Battery | Every 3–4 years | $100–$180 |
+| Dealer inspection | Every 2–3 years (optional) | $200–$400 |
+| Exercise-cycle fuel | Weekly | $10–$75/year |
+| **Total** | | **~$150–$400/year** |
+
+Against a $10,000–$15,000 installed cost, maintenance is ~1–3% a year — the cheapest reliability money in homeownership. The owners with 20-year-old units aren't lucky; they're the ones with the logbook.
 
 [[accessories:maintenance-kits]]
