@@ -22,7 +22,7 @@ const rows = picks.map((p) => ({ ...p, m: getModel(p.id) }));
         <div class="pr-main">
           <span class="pr-label">{label}</span>
           <a class="pr-name" href={`/generators/${m.id}/`}>{m.name}</a>
-          <span class="pr-specs">{m.powerKw} kW · {m.fuel} · {m.noiseDb ? `${m.noiseDb} dB(A)` : m.warranty}</span>
+          <span class="pr-specs">{m.powerKw} kW · {m.fuel} · {m.noiseDb ? `${m.noiseDb} dB` : m.enclosure}</span>
         </div>
         <span class="score sm" title="Guide score out of 10">{m.score.toFixed(1)}</span>
         <div class="pr-buy">

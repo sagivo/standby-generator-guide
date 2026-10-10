@@ -1,11 +1,11 @@
 ---
-import type { GeneratorModel } from "../data/models";
+import type { MowerModel } from "../data/models";
 import BuyButton from "./BuyButton.astro";
 import ProductImage from "./ProductImage.astro";
 import PriceTier from "./PriceTier.astro";
 
 interface Props {
-  model: GeneratorModel;
+  model: MowerModel;
   label?: string;
   rank?: number;
   /** compact = no pros/cons, used in top-picks grids */
@@ -16,6 +16,7 @@ interface Props {
   accent?: string;
 }
 const { model: m, label, rank, compact = false, featured = false, accent } = Astro.props;
+const noiseChip = m.noiseDb ? `${m.noiseDb} dB` : m.enclosure;
 ---
 
 <article class:list={["product-card", compact && "compact", featured && "featured"]} style={accent ? `--award:${accent}` : undefined}>
@@ -29,9 +30,10 @@ const { model: m, label, rank, compact = false, featured = false, accent } = Ast
       <span class="score" title="Guide score out of 10">{m.score.toFixed(1)}</span>
     </div>
     <ul class="chips" aria-label="Key specs">
-      <li class="hi">{m.powerKw} kW</li>
+      <li>{m.powerKw} kW</li>
       <li>{m.fuel}</li>
-      <li>{m.noiseDb ? `${m.noiseDb} dB(A)` : "ATS included"}</li>
+      <li>{noiseChip}</li>
+      {m.noiseDb && m.noiseDb <= 62 && <li class="hi">Quiet</li>}
     </ul>
     <p class="pc-best">{m.bestFor}</p>
     {!compact && (

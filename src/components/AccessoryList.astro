@@ -1,22 +1,21 @@
 ---
-import type { GeneratorModel } from "../data/models";
-import { accessoriesFor, universalAccessories, KIND_LABEL } from "../data/accessories";
+import type { MowerModel } from "../data/models";
+import { accessoriesFor, KIND_LABEL } from "../data/accessories";
 import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
 
 interface Props {
-  model: GeneratorModel;
+  model: MowerModel;
 }
 const { model: m } = Astro.props;
 const items = accessoriesFor(m.id);
-const universal = universalAccessories().slice(0, 4);
-const rows = [...new Map([...items, ...universal].map((a) => [a.name, a])).values()];
+const rows = items;
 ---
 
 {rows.length > 0 && (
   <section class="acc" aria-labelledby="accessories">
     <h2 id="accessories">Accessories for the {m.shortName}</h2>
     <p class="acc-intro">
-      Official and universal add-ons sold on Amazon — maintenance kits, transfer switches, battery maintainers and cold-weather gear. Check the listing confirms your exact model before you buy.
+Official and universal add-ons sold on Amazon — maintenance kits, transfer switches, battery maintainers and cold-weather gear. Check the listing confirms your exact model before you buy.
     </p>
     <ul class="acc-list">
       {rows.map((a) => (

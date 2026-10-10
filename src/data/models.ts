@@ -551,3 +551,6 @@ export function priceTierOf(price: number): PriceTier {
 export function priceTier(m: GeneratorModel): PriceTier {
   return priceTierOf(m.priceLow);
 }
+
+/** Template-compatibility alias: template components import `MowerModel`. */
+export type MowerModel = GeneratorModel;

@@ -1,10 +1,10 @@
 ---
-import type { GeneratorModel } from "../data/models";
+import type { MowerModel } from "../data/models";
 import PriceTier from "./PriceTier.astro";
 import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
 
 interface Props {
-  models: GeneratorModel[];
+  models: MowerModel[];
   sortable?: boolean;
   caption?: string;
 }
@@ -19,8 +19,7 @@ const { models, sortable = false, caption } = Astro.props;
         <th scope="col" data-sort="text">Model</th>
         <th scope="col" data-sort="num">Score</th>
         <th scope="col" data-sort="num">Power</th>
-        <th scope="col" data-sort="text">Fuel</th>
-        <th scope="col" data-sort="text">Transfer switch</th>
+        <th scope="col" data-sort="num">Fuel</th>
         <th scope="col" data-sort="num">Noise</th>
         <th scope="col" data-sort="num">Price tier</th>
         <th scope="col"><span class="sr-only">Buy</span></th>
@@ -36,8 +35,7 @@ const { models, sortable = false, caption } = Astro.props;
           <td class="c-score" data-label="Score" data-v={m.score}><span class="score sm">{m.score.toFixed(1)}</span></td>
           <td data-label="Power" data-v={m.powerKw}>{m.powerKw} kW</td>
           <td data-label="Fuel" data-v={m.fuel}>{m.fuel}</td>
-          <td class="c-nav" data-label="Transfer switch" data-v={m.transferSwitch}>{m.transferSwitch}</td>
-          <td data-label="Noise" data-v={m.noiseDb ?? 999}>{m.noiseDb ? `${m.noiseDb} dB(A)` : "—"}</td>
+          <td data-label="Noise" data-v={m.noiseDb ?? 0}>{m.noiseDb ? `${m.noiseDb} dB` : "—"}</td>
           <td data-label="Price tier" data-v={m.priceLow}><PriceTier model={m} label={false} /></td>
           <td class="c-buy">
             <a class="btn btn-xs buy" href={amazonLink(m.query, m.asin)} rel={AFFILIATE_REL} target="_blank">
