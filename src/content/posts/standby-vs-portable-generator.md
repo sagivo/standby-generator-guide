@@ -49,4 +49,22 @@ Multi-day outages. Travel. A home office that can't go dark. Medical equipment. 
 
 A large portable with a professionally installed manual transfer switch ($2,000–$4,000 all-in) is the value king for occasional outages. If you outgrow it, the transfer-switch wiring transfers to a future standby project.
 
+## Safety: the portable's hidden cost
+
+This section isn't close: standby wins on safety, and it's not debatable.
+
+Portable generators kill people every year — carbon monoxide from units run in garages, near windows, or under eaves. A standby sits outside permanently, plumbed and wired to code, with the exhaust engineered away from the house. It starts itself; nobody's dragging a unit out in a storm at 2 AM or refueling a hot engine in the rain.
+
+Portables also mean gasoline storage — stabilizer, rotation, fire risk — and extension cords across wet ground. None of this is unmanageable, but it's a risk surface that standby simply doesn't have. If anyone in the house is elderly, disabled, or just not mechanically inclined, the safety case alone justifies standby.
+
+## Resale value
+
+A permanently installed standby generator shows up on appraisals and listings; a portable in the garage doesn't. Estimates vary by market, but whole-house backup typically recoups **50–70% of its installed cost** at resale in outage-prone regions — and in some markets it's a genuine differentiator that moves the listing. (It's not a kitchen remodel, but it's one of the few mechanical upgrades buyers can see working.) Keep the install documentation for the disclosure packet.
+
+## HOA and neighbor considerations
+
+Standbys are permanent exterior equipment — which means HOA architectural review in many communities. Most HOAs approve them (they're quieter than portables and look like an AC condenser), but get written approval **before** the install, not after. Placement rules, screening requirements (fencing/landscaping), and noise limits are the usual conditions.
+
+Portables have the opposite problem: no approval needed, but running one for three days straight at 75 dB(A) will generate the neighbor complaints that standbys (62–69 dB(A), and automatic) mostly avoid. The [quietest standby picks](/posts/best-quiet-standby-generators/) exist precisely for this audience.
+
 If you've decided on standby, [size it correctly](/posts/standby-generator-sizing-guide/) — then see the [best standby generators of 2026](/posts/best-standby-generators-2026/).
