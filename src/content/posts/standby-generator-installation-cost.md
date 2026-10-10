@@ -52,4 +52,42 @@ Get three licensed quotes — installer pricing varies more than equipment prici
 
 Get your ballpark first with the [installation cost estimator](/tools/install-cost-estimator/), then read the [sizing guide](/posts/standby-generator-sizing-guide/) so you're quoting the right size.
 
+## Comparing quotes: the line-item checklist
+
+Never compare quotes on the bottom line alone — a cheap quote that omits the gas line isn't cheap. Every proposal should break out:
+
+- [ ] Generator model number and kW rating (exact SKU, not "20kW class")
+- [ ] Transfer switch: amperage, service-entrance rated or not, brand
+- [ ] Electrical: wire runs, conduit, panel work itemized separately
+- [ ] Gas: line length, pipe size, meter upsize if needed (with utility confirmation)
+- [ ] Pad: composite pad included or concrete pour specified
+- [ ] Permits and inspections: who pulls them, fees included
+- [ ] Startup and load testing: full-load test documented, not just "it started"
+- [ ] Monitoring setup: Wi-Fi/app configured and demonstrated
+- [ ] Warranty registration: who files it, when
+- [ ] Maintenance: first-year service included? Annual contract price?
+
+Two quotes $3,000 apart usually differ in scope, not honesty. The line items tell you which.
+
+## What's typically NOT included
+
+- **Landscaping repair** after trenching. Budget a few hundred for sod.
+- **Propane tank and first fill** (often a separate contract with the propane company).
+- **Electrical panel upgrade** if your 100A service can't take the ATS — sometimes quoted separately at $2,000–$4,000.
+- **Crane rental** for difficult placements (steep lots, over-the-house sets): $500–$1,500 when needed.
+- **Extended warranty** — decide separately, not under install-day pressure.
+
+## Financing and incentives
+
+Many dealers offer 12-month same-as-cash or low-APR financing through partners — worth asking about, since the project is lumpy. A few notes:
+
+- The federal residential clean energy credit does **not** cover standby generators (it's solar/battery/geothermal). Don't let anyone tell you otherwise.
+- Some utilities offer **demand-response programs** that pay you a small annual credit for letting them exercise or curtail the unit — Generac's Grid Services program is the prominent example. Ask your installer; it's free money if your utility participates.
+- Homeowners insurance sometimes offers a small discount for whole-house backup — call your agent after install. It won't be much, but it's a phone call.
+- For medical necessity (powered medical equipment), check with your tax advisor about medical expense deductions — standby generators have qualified in documented cases.
+
+## Timing your purchase
+
+Late winter through spring is the buyer's season: installers are hungry, lead times are short, and you're ready before storm season. Buying in August after a hurricane warning means premium pricing and 6–10 week backlogs. If your region has a predictable storm season, buy 3–4 months ahead of it.
+
 [[accessories:transfer-switches]]
