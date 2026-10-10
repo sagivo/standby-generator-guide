@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { ACCESSORIES, KIND_LABEL, type AccessoryKind } from "../data/accessories";
+import { MODELS } from "../data/models";
+import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
+import { SITE_URL } from "../lib/site";
+import { breadcrumbLd, type Crumb } from "../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Accessories", href: "/accessories/" },
+];
+const shortName = (id: string) => MODELS.find((m) => m.id === id)?.shortName ?? id;
+const SECTIONS: { kinds: AccessoryKind[]; title: string; blurb: string; more?: string }[] = [
+  { kinds: ["ats"], title: "Automatic transfer switches", blurb: "The switch that senses the outage and moves your home to generator power. Match the amperage to your panel.", more: "/posts/standby-generator-sizing-guide/" },
+  { kinds: ["maintenance"], title: "Maintenance kits & oil", blurb: "Annual service kits with oil, filters and plugs — the cheap insurance that keeps the warranty valid." },
+  { kinds: ["battery", "cold"], title: "Batteries & cold weather", blurb: "Dead crank batteries are the #1 no-start cause. Maintainers and cold-weather kits fix that." },
+  { kinds: ["surge", "cover", "other"], title: "Protection & extras", blurb: "Whole-house surge protectors, weather covers and propane gauges." },
+];
+const brands = [...new Set(ACCESSORIES.filter((a) => !a.fits.includes("universal")).flatMap((a) => a.fits.map((f) => MODELS.find((m) => m.id === f)?.brand ?? "")))].filter(Boolean).sort();
+const brandOf = (a: (typeof ACCESSORIES)[number]) =>
+  a.fits.includes("universal") ? "universal" : [...new Set(a.fits.map((f) => MODELS.find((m) => m.id === f)?.brand))].join(" ");
+const jsonLd = [
+  breadcrumbLd(crumbs),
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Standby generator accessories",
+    url: `${SITE_URL}/accessories/`,
+  },
+];
+---
+
+<BaseLayout
+  title="Standby Generator Accessories: ATS, Maintenance Kits & More"
+  description={`${ACCESSORIES.length} standby generator accessories: automatic transfer switches, annual maintenance kits, battery maintainers, cold-weather kits and surge protection.`}
+  canonical={`${SITE_URL}/accessories/`}
+  jsonLd={jsonLd}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero" data-pagefind-body>
+      <h1>Standby generator accessories</h1>
+      <p>Transfer switches, maintenance kits and must-have extras for the generators we review, all sold on Amazon. Pick your brand to filter.</p>
+    </div>
+    <div class="chip-nav acc-filter" role="group" aria-label="Filter by generator brand">
+      <button type="button" class="active" data-brand="all">All</button>
+      {brands.map((b) => <button type="button" data-brand={b}>{b}</button>)}
+    </div>
+    {SECTIONS.map((sec) => {
+      const items = ACCESSORIES.filter((a) => sec.kinds.includes(a.kind)).sort((a, b) => Number(b.oem) - Number(a.oem) || a.brand.localeCompare(b.brand));
+      return (
+        <section class="acc-section">
+          <div class="section-head">
+            <h2 class="section-title">{sec.title}</h2>
+            {sec.more && <a class="section-link" href={sec.more}>Buying guide →</a>}
+          </div>
+          <p class="acc-intro">{sec.blurb}</p>
+          <ul class="acc-list">
+            {items.map((a) => (
+              <li class="acc-row" data-brands={brandOf(a)}>
+                <span class="acc-kind">{KIND_LABEL[a.kind]}</span>
+                <div class="acc-main">
+                  <strong>{a.name}</strong>
+                  <span class="acc-tag">{a.oem ? `Official ${a.brand}` : a.fits.includes("universal") ? "Universal fit" : "Compatible, third-party"}</span>
+                  <p>
+                    {a.why}
+                    {!a.fits.includes("universal") && (
+                      <> Fits: {a.fits.map((f, i) => <>{i > 0 && ", "}<a href={`/generators/${f}/`}>{shortName(f)}</a></>)}.</>
+                    )}
+                    {a.fitNote && ` ${a.fitNote}`}
+                  </p>
+                </div>
+                <div class="acc-buy">
+                  <a class="btn buy btn-xs" href={amazonLink(a.name, a.asin)} rel={AFFILIATE_REL} target="_blank">Check price</a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+    <p class="fine">Compatibility checked October 2026. Confirm your exact model on the listing before buying.</p>
+  </div>
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".acc-filter button");
+    buttons.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const brand = btn.dataset.brand!;
+        buttons.forEach((b) => b.classList.toggle("active", b === btn));
+        document.querySelectorAll<HTMLElement>(".acc-row[data-brands]").forEach((row) => {
+          const brands = row.dataset.brands!;
+          row.hidden = !(brand === "all" || brands === "universal" || brands.split(" ").includes(brand));
+        });
+        document.querySelectorAll<HTMLElement>(".acc-section").forEach((sec) => {
+          sec.hidden = !sec.querySelector(".acc-row:not([hidden])");
+        });
+      })
+    );
+  </script>
+</BaseLayout>

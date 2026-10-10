@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd } from "../../lib/schema";
+
+const title = "Standby Generator Installation Cost Estimator (2026)";
+const description =
+  "Estimate the true installed cost of a home standby generator: unit, labor, gas line, electrical, pad and permits. Free calculator.";
+const url = `${SITE_URL}/tools/install-cost-estimator/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "Installation cost estimator", href: "/tools/install-cost-estimator/" },
+];
+const jsonLd = [
+  breadcrumbLd(crumbs),
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Standby Generator Installation Cost Estimator",
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    url,
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What does a standby generator really cost installed?</h1>
+      <p>
+        The unit is roughly half the project. Answer five questions about your
+        home and get an itemized installed-cost estimate — the number to budget
+        before you call an installer.
+      </p>
+    </div>
+
+    <div class="calc" id="install-calc">
+      <div class="row">
+        <div>
+          <label for="gsize">Generator size</label>
+          <select id="gsize">
+            <option value="14">14 kW (essentials + one AC)</option>
+            <option value="18">18 kW</option>
+            <option value="20" selected>20 kW</option>
+            <option value="22">22 kW</option>
+            <option value="24">24 kW</option>
+            <option value="26">26 kW (whole-house)</option>
+          </select>
+        </div>
+        <div>
+          <label for="gasdist">Gas meter → generator distance</label>
+          <select id="gasdist">
+            <option value="near">Under 25 ft</option>
+            <option value="mid" selected>25–75 ft</option>
+            <option value="far">Over 75 ft / trenching needed</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="panel">Electrical panel situation</label>
+          <select id="panel">
+            <option value="ok" selected>200A panel, space available</option>
+            <option value="tight">Panel full — subpanel needed</option>
+            <option value="upgrade">Old panel — service upgrade needed</option>
+          </select>
+        </div>
+        <div>
+          <label for="pad">Mounting pad</label>
+          <select id="pad">
+            <option value="composite" selected>Composite pad (included w/ many kits)</option>
+            <option value="concrete">Poured concrete pad</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="region">Labor market</label>
+          <select id="region">
+            <option value="low">Lower-cost area</option>
+            <option value="avg" selected>Average US</option>
+            <option value="high">High-cost metro / coastal</option>
+          </select>
+        </div>
+        <div>
+          <label for="fuel">Fuel type</label>
+          <select id="fuel">
+            <option value="ng" selected>Natural gas (utility line)</option>
+            <option value="lp">Propane (tank install extra)</option>
+          </select>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="cost-btn" type="button">Estimate my cost 💰</button></p>
+      <div class="calc-result" id="cost-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <h2>Where the money goes</h2>
+      <p>
+        A typical 20 kW project breaks down roughly like this: the generator and
+        transfer switch ($5,000–$7,000), electrician labor and wiring
+        ($2,500–$4,500), gas plumbing ($500–$2,000 depending on distance),
+        pad and site prep ($300–$800), and permits/inspection ($100–$500).
+        All-in, most homeowners land between <strong>$10,000 and $15,000</strong>
+        — the unit itself is only about half.
+      </p>
+      <p>
+        Propane adds a tank if you don't have one: an underground 500-gallon tank
+        installed runs a few thousand dollars more. And if your panel needs a
+        service upgrade, add $2,000–$4,000. Get three local quotes — installer
+        pricing varies more than equipment pricing.
+      </p>
+      <p>
+        Haven't picked a size yet? Run the <a href="/tools/kw-size-calculator/">kW size calculator</a>
+        first, then read our <a href="/posts/standby-generator-installation-cost/">installation cost guide</a>
+        for the full breakdown.
+      </p>
+    </article>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => "$" + Math.round(n).toLocaleString("en-US");
+    const mult = { low: 0.85, avg: 1, high: 1.25 };
+
+    const UNITS = { 14: [4300, 5400], 18: [4900, 5900], 20: [5300, 6500], 22: [5400, 6400], 24: [5900, 6900], 26: [6400, 7400] };
+
+    $("cost-btn").addEventListener("click", () => {
+      const size = $("gsize").value;
+      const m = mult[$("region").value];
+      const [uLo, uHi] = UNITS[size];
+      const labor = [2500 * m, 4500 * m];
+      const gas = { near: [400, 900], mid: [800, 1600], far: [1800, 3500] }[$("gasdist").value];
+      const panel = { ok: [800, 1500], tight: [1500, 2800], upgrade: [2800, 5000] }[$("panel").value];
+      const pad = $("pad").value === "concrete" ? [500, 900] : [0, 300];
+      const permits = [150, 500];
+      const tank = $("fuel").value === "lp" ? [2500, 5000] : [0, 0];
+
+      const rows = [
+        ["Generator + transfer switch", uLo, uHi],
+        ["Electrician labor & wiring", labor[0], labor[1]],
+        ["Gas line / plumbing", gas[0], gas[1]],
+        ["Panel work", panel[0], panel[1]],
+        ["Pad & site prep", pad[0], pad[1]],
+        ["Permits & inspection", permits[0], permits[1]],
+      ];
+      if (tank[1] > 0) rows.push(["Propane tank installed", tank[0], tank[1]]);
+      const lo = rows.reduce((a, r) => a + r[1], 0);
+      const hi = rows.reduce((a, r) => a + r[2], 0);
+
+      $("cost-result").innerHTML = `
+        <h3>Estimated installed cost: ${fmt(lo)} – ${fmt(hi)}</h3>
+        <table class="spec-table"><tbody>
+          ${rows.map((r) => `<tr><th scope="row">${r[0]}</th><td>${fmt(r[1])} – ${fmt(r[2])}</td></tr>`).join("")}
+          <tr class="total"><th scope="row">Total project</th><td><strong>${fmt(lo)} – ${fmt(hi)}</strong></td></tr>
+        </tbody></table>
+        <p class="fine">Ballpark based on 2026 US averages — your quotes may land outside it, especially in high-cost metros. Always get three licensed installer quotes; the unit price is the least variable line item.</p>`;
+      $("cost-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

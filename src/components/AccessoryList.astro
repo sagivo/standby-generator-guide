@@ -1,0 +1,38 @@
+---
+import type { GeneratorModel } from "../data/models";
+import { accessoriesFor, universalAccessories, KIND_LABEL } from "../data/accessories";
+import { AFFILIATE_REL, amazonLink } from "../lib/amazon";
+
+interface Props {
+  model: GeneratorModel;
+}
+const { model: m } = Astro.props;
+const items = accessoriesFor(m.id);
+const universal = universalAccessories().slice(0, 4);
+const rows = [...new Map([...items, ...universal].map((a) => [a.name, a])).values()];
+---
+
+{rows.length > 0 && (
+  <section class="acc" aria-labelledby="accessories">
+    <h2 id="accessories">Accessories for the {m.shortName}</h2>
+    <p class="acc-intro">
+      Official and universal add-ons sold on Amazon — maintenance kits, transfer switches, battery maintainers and cold-weather gear. Check the listing confirms your exact model before you buy.
+    </p>
+    <ul class="acc-list">
+      {rows.map((a) => (
+        <li class="acc-row">
+          <span class="acc-kind">{KIND_LABEL[a.kind]}</span>
+          <div class="acc-main">
+            <strong>{a.name}</strong>
+            <span class="acc-tag">{a.oem ? `Official ${a.brand}` : a.fits.includes("universal") ? "Universal fit" : "Compatible, third-party"}</span>
+            <p>{a.why}{a.fitNote ? ` ${a.fitNote}` : ""}</p>
+          </div>
+          <div class="acc-buy">
+            <a class="btn buy btn-xs" href={amazonLink(a.name, a.asin)} rel={AFFILIATE_REL} target="_blank">Check price</a>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="fine">Compatibility checked October 2026. More in our <a href="/accessories/">standby generator accessories guide</a>.</p>
+  </section>
+)}

@@ -1,0 +1,218 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Visual from "../../components/Visual.astro";
+import { MODELS, priceTierOf } from "../../data/models";
+import { amazonLink } from "../../lib/amazon";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd } from "../../lib/schema";
+
+const title = "Standby Generator Size Calculator — What Size Generator Do I Need?";
+const description =
+  "Add up your home's essential loads to find the right standby generator size in kW. Free sizing calculator with model recommendations.";
+const url = `${SITE_URL}/tools/kw-size-calculator/`;
+
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+  { name: "kW size calculator", href: "/tools/kw-size-calculator/" },
+];
+const jsonLd = [
+  breadcrumbLd(crumbs),
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Standby Generator kW Size Calculator",
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    url,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What size standby generator do I need for my house?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Add up the running watts of everything you want powered, plus the highest starting surge of your largest motor (usually the AC). Most 1,500–2,500 sq ft homes land at 18–22 kW; 2,500+ sq ft homes with multiple AC zones need 22–26 kW. The calculator above does the math.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How many watts does a central air conditioner need from a generator?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A 3-ton central AC draws roughly 3,500 running watts but needs 10,000–12,000 watts to start. A 5-ton unit can need up to 20,000 starting watts — which is why AC size dominates generator sizing.",
+        },
+      },
+    ],
+  },
+];
+
+const modelsJson = JSON.stringify(
+  MODELS.map((m) => ({
+    id: m.id, name: m.name, shortName: m.shortName, powerKw: m.powerKw, fuel: m.fuel,
+    priceLow: m.priceLow, score: m.score, bestFor: m.bestFor,
+    band: `${priceTierOf(m.priceLow).sym} ${priceTierOf(m.priceLow).label}`,
+    link: amazonLink(m.query, m.asin),
+  }))
+);
+---
+
+<BaseLayout title={title} description={description} canonical={url} jsonLd={jsonLd}>
+  <div class="wrap">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>What size standby generator do I need?</h1>
+      <p>
+        Undersizing is the most expensive generator mistake — the unit trips the
+        moment your AC kicks on. Check the loads you want backed up and get your
+        kW number in under two minutes.
+      </p>
+    </div>
+
+    <div class="calc" id="kw-calc">
+      <div class="row">
+        <div>
+          <label for="ac">Central air conditioning</label>
+          <select id="ac">
+            <option value="0">No central AC</option>
+            <option value="2">2-ton unit</option>
+            <option value="3" selected>3-ton unit (most common)</option>
+            <option value="4">4-ton unit</option>
+            <option value="5">5-ton unit</option>
+            <option value="8">Two units (3 + 2 ton)</option>
+          </select>
+        </div>
+        <div>
+          <label for="heat">Heating type</label>
+          <select id="heat">
+            <option value="gas">Gas furnace / heat pump (fan only)</option>
+            <option value="electric">Electric resistance heat</option>
+            <option value="none">No heating load</option>
+          </select>
+        </div>
+      </div>
+      <fieldset class="check-grid">
+        <legend>Other big loads to back up</legend>
+        <label><input type="checkbox" id="l-range" /> Electric range / oven</label>
+        <label><input type="checkbox" id="l-dryer" /> Electric clothes dryer</label>
+        <label><input type="checkbox" id="l-waterheater" /> Electric water heater</label>
+        <label><input type="checkbox" id="l-well" /> Well pump</label>
+        <label><input type="checkbox" id="l-sump" checked /> Sump pump</label>
+        <label><input type="checkbox" id="l-ev" /> EV charger (Level 2)</label>
+        <label><input type="checkbox" id="l-pool" /> Pool pump</label>
+        <label><input type="checkbox" id="l-shop" /> Workshop / garage tools</label>
+      </fieldset>
+      <div class="row">
+        <div>
+          <label for="fuel">Fuel available</label>
+          <select id="fuel">
+            <option value="lp">Liquid propane</option>
+            <option value="ng" selected>Natural gas</option>
+          </select>
+        </div>
+        <div>
+          <label for="margin">Safety margin</label>
+          <select id="margin">
+            <option value="1.1">10% (tight)</option>
+            <option value="1.25" selected>25% (recommended)</option>
+            <option value="1.4">40% (room to grow)</option>
+          </select>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;"><button class="btn" id="size-btn" type="button">Calculate my size ⚡</button></p>
+      <div class="calc-result" id="kw-result" aria-live="polite"></div>
+    </div>
+
+    <article class="prose" data-pagefind-body>
+      <Visual name="diagram:sizing" />
+      <h2>How the math works</h2>
+      <p>
+        Every load has two numbers: <strong>running watts</strong> (what it draws
+        continuously) and <strong>starting watts</strong> (the brief surge when a
+        motor starts). Your generator must cover all running watts at once, plus
+        the single largest starting surge. Air conditioning dominates both —
+        a 3-ton unit needs roughly 3,500 W running but 12,000 W to start.
+      </p>
+      <p>
+        The calculator adds a base 3,000 W for lights, fridge, freezer, internet
+        and outlets, sums your checked loads, adds the biggest motor surge, then
+        applies your safety margin and rounds up to the next standard generator
+        size (14, 18, 20, 22, 24 or 26 kW).
+      </p>
+      <p>
+        One fuel caveat: several models <strong>derate on natural gas</strong>
+        (a 20 kW LP unit may be 18 kW on NG). If you're on natural gas, size to
+        the NG rating, not the headline number. Our
+        <a href="/posts/standby-generator-sizing-guide/">sizing guide</a> walks
+        through the whole process, and the
+        <a href="/tools/install-cost-estimator/">installation cost estimator</a>
+        prices the project once you know your size.
+      </p>
+    </article>
+  </div>
+
+  <script define:vars={{ modelsJson }}>
+    const MODELS = JSON.parse(modelsJson);
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => Math.round(n).toLocaleString("en-US");
+
+    // [runningW, startingW]
+    const AC = { 0: [0, 0], 2: [2500, 8000], 3: [3500, 12000], 4: [5000, 16000], 5: [6000, 20000], 8: [6000, 20000] };
+    const HEAT = { gas: [800, 1500], electric: [10000, 10000], none: [0, 0] };
+    const LOADS = {
+      "l-range": [8000, 8000], "l-dryer": [5000, 5000], "l-waterheater": [4500, 4500],
+      "l-well": [1000, 3000], "l-sump": [800, 1500], "l-ev": [7200, 7200],
+      "l-pool": [1500, 3000], "l-shop": [2000, 4000],
+    };
+    const SIZES = [14, 18, 20, 22, 24, 26];
+
+    $("size-btn").addEventListener("click", () => {
+      const ac = AC[$("ac").value];
+      const heat = HEAT[$("heat").value];
+      let running = 3000 + ac[0] + heat[0];
+      let surge = Math.max(ac[1] - ac[0], heat[1] - heat[0], 0);
+      const picked = [];
+      for (const [id, w] of Object.entries(LOADS)) {
+        if ($(id).checked) {
+          running += w[0];
+          surge = Math.max(surge, w[1] - w[0]);
+          picked.push(id);
+        }
+      }
+      const margin = parseFloat($("margin").value);
+      const needKw = ((running + surge) * margin) / 1000;
+      const size = SIZES.find((s) => s >= needKw) ?? 26;
+      const over = needKw > 26;
+      const fuel = $("fuel").value;
+      const derateNote = fuel === "ng"
+        ? " You're on natural gas: several models derate on NG (e.g. 20 kW → 18 kW), so confirm the NG rating of any model you shortlist."
+        : "";
+
+      const fits = MODELS.filter((m) => m.powerKw >= (over ? 99 : size))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3);
+      const cards = fits.length
+        ? `<div class="tp-grid" style="margin-top:1rem;">${fits.map((m) => `
+          <div class="mini-card">
+            <strong><a href="/generators/${m.id}/">${m.name}</a></strong>
+            <span>${m.powerKw} kW · ${m.band} · score ${m.score.toFixed(1)}</span>
+            <a class="btn buy btn-xs" href="${m.link}" target="_blank" rel="sponsored nofollow noopener">Check price</a>
+          </div>`).join("")}</div>`
+        : `<p>Over 26 kW puts you in liquid-cooled commercial territory — get a dealer load calculation rather than sizing from a chart.</p>`;
+
+      $("kw-result").innerHTML = `
+        <h3>Your number: ${over ? "26+ kW" : size + " kW"}</h3>
+        <p>Estimated running load <strong>${fmt(running)} W</strong> plus largest motor surge
+        <strong>${fmt(surge)} W</strong>, with a ${Math.round((margin - 1) * 100)}% margin →
+        <strong>${needKw.toFixed(1)} kW</strong> minimum.${derateNote}</p>
+        ${cards}
+        <p class="fine">Estimates use typical appliance wattages, not your exact models — treat this as a starting point and confirm with an electrician's load calculation before buying.</p>`;
+      $("kw-result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
+</BaseLayout>

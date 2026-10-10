@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, type Crumb } from "../../lib/schema";
+
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools/" },
+];
+const tools = [
+  { href: "/tools/kw-size-calculator/", icon: "⚡", name: "kW Size Calculator", text: "Check your essential loads and get the generator size in kW your home actually needs.", go: "Size my generator" },
+  { href: "/tools/install-cost-estimator/", icon: "💰", name: "Installation Cost Estimator", text: "The true installed price: unit, labor, gas line, panel work, pad and permits.", go: "Estimate my cost" },
+  { href: "/tools/standby-vs-portable/", icon: "⚖️", name: "Standby vs. Portable", text: "10-year cost comparison plus the honest convenience trade-offs.", go: "Compare" },
+  { href: "/generators/", icon: "📊", name: "Comparison Chart", text: "Every model side by side: power, fuel, transfer switch, noise and price. Sortable.", go: "Compare models" },
+  { href: "/accessories/", icon: "🧰", name: "Accessories Finder", text: "Maintenance kits, transfer switches, battery maintainers and cold-weather gear.", go: "Find accessories" },
+];
+---
+
+<BaseLayout
+  title="Free Standby Generator Calculators & Tools"
+  description="Free standby generator tools: kW size calculator, installation cost estimator, standby vs. portable comparison, and a sortable comparison chart of every model."
+  canonical={`${SITE_URL}/tools/`}
+  jsonLd={breadcrumbLd(crumbs)}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero">
+      <h1>Free standby generator tools</h1>
+      <p>Turn "what size generator do I need?" into numbers. Every tool runs in your browser, and nothing you enter leaves your device.</p>
+    </div>
+    <div class="tool-grid">
+      {tools.map((t) => (
+        <a class="tool-card" href={t.href}>
+          <div class="tool-icon">{t.icon}</div>
+          <h2 class="h3">{t.name}</h2>
+          <p>{t.text}</p>
+          <span class="go">{t.go}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

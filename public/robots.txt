@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://standby-generator-guide.pages.dev/sitemap-index.xml

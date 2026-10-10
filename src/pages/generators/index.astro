@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import Visual from "../../components/Visual.astro";
+import { MODELS } from "../../data/models";
+import { SITE_URL } from "../../lib/site";
+import { breadcrumbLd, itemListLd, faqLd, type Crumb } from "../../lib/schema";
+
+const byScore = [...MODELS].sort((a, b) => b.score - a.score);
+const url = `${SITE_URL}/generators/`;
+const crumbs: Crumb[] = [
+  { name: "Home", href: "/" },
+  { name: "Compare generators", href: "/generators/" },
+];
+const faq = [
+  {
+    q: "Which standby generator has the best specs in 2026?",
+    a: `By our research-based score, the ${byScore[0].name} currently ranks highest (${byScore[0].score}/10). The right generator for you depends on your home's loads — especially air conditioning — so sort the table by the spec that matters most, or run the kW size calculator.`,
+  },
+  {
+    q: "How much generator do I need for my house?",
+    a: "14 kW covers essential circuits plus one AC unit with load management; 18–20 kW handles most of a 1,500–2,500 sq ft home; 22–26 kW is true whole-house backup for 2,500+ sq ft. Our kW size calculator adds up your loads in two minutes.",
+  },
+  {
+    q: "How loud are standby generators?",
+    a: "Most air-cooled units run 62–69 dB(A) — between normal conversation and a vacuum cleaner. The weekly self-test (exercise cycle) is what your neighbors hear, so exercise noise matters more than full-load noise.",
+  },
+];
+const jsonLd = [breadcrumbLd(crumbs), itemListLd("Home standby generators compared", byScore), faqLd(faq)];
+
+const brands = [...new Set(MODELS.map((m) => m.brand))].sort();
+---
+
+<BaseLayout
+  title="Standby Generator Comparison Chart (2026): Every Model"
+  description={`Compare ${MODELS.length} home standby generators side by side: power (kW), fuel, transfer switch, noise, warranty, price and our score. Sortable chart.`}
+  canonical={url}
+  jsonLd={jsonLd}
+>
+  <div class="wrap wide">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="calc-hero" data-pagefind-body>
+      <h1>Standby generator comparison chart</h1>
+      <p>
+        Every standby generator we track, side by side. Click any column to sort by it.
+        Covers {MODELS.length} models from {brands.join(", ")}.
+      </p>
+    </div>
+
+    <ComparisonTable models={byScore} sortable caption="Home standby generators, sorted by Guide score (click headers to re-sort)" />
+    <p class="fine">Power and noise are manufacturer ratings. Prices are typical US street-price ranges as of October 2026 and change often; installation is extra.</p>
+
+    <div class="section-head"><h2 class="section-title">Value, power and noise at a glance</h2></div>
+    <div class="viz-pair">
+      <Visual name="chart:value" />
+      <Visual name="chart:power" />
+    </div>
+    <Visual name="chart:noise" />
+
+    <div class="section-head"><h2 class="section-title">Highest-rated models</h2></div>
+    <div class="tp-grid">
+      {byScore.slice(0, 6).map((m, i) => <ProductCard model={m} rank={i + 1} label="Top rated" />)}
+    </div>
+
+    <div class="prose" style="margin-top:3rem;">
+      <h2>How to read this chart</h2>
+      <p>
+        <strong>Power (kW)</strong> is the standby rating — how much your home can draw at once.
+        Air conditioning dominates the math: a 4-ton central AC needs roughly 5 kW running and
+        up to 20 kW to start. Our <a href="/tools/kw-size-calculator/">kW size calculator</a> adds up your loads.
+        <strong>Fuel</strong> matters because most models derate on natural gas (e.g. 20 kW on propane
+        becomes 18 kW on NG). <strong>Noise</strong> is the exercise-cycle figure — the weekly self-test
+        your neighbors will hear. Read our <a href="/posts/standby-generator-sizing-guide/">sizing guide</a>
+        before you buy.
+      </p>
+      <section class="faq" aria-label="FAQ">
+        <h2>FAQ</h2>
+        {faq.map((f) => <details><summary>{f.q}</summary><div>{f.a}</div></details>)}
+      </section>
+    </div>
+  </div>
+</BaseLayout>

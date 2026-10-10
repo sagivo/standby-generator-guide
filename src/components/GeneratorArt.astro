@@ -1,0 +1,57 @@
+---
+// Stylized standby-generator illustration used whenever no licensed product
+// photo exists in src/assets/generators/. Colors vary by brand.
+import type { GeneratorModel } from "../data/models";
+
+interface Props {
+  model: GeneratorModel;
+  size?: number;
+}
+const { model: m, size = 96 } = Astro.props;
+
+const COLORS: Record<string, [string, string]> = {
+  Generac: ["#3f3f46", "#f97316"],
+  Kohler: ["#1e3a5f", "#f8fafc"],
+  Champion: ["#1a1a1a", "#facc15"],
+  Cummins: ["#7f1d1d", "#f8fafc"],
+  "Briggs & Stratton": ["#14532d", "#fde047"],
+};
+const [body, accent] = COLORS[m.brand] ?? ["#334155", "#94a3b8"];
+const uid = m.id.replace(/[^a-z0-9]/g, "");
+---
+
+<svg
+  class="generator-art"
+  width={size}
+  height={Math.round(size * 0.72)}
+  viewBox="0 0 200 144"
+  role="img"
+  aria-label={`${m.name} illustration`}
+>
+  <defs>
+    <linearGradient id={`gb-${uid}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color={body} stop-opacity="0.92" />
+      <stop offset="1" stop-color={body} />
+    </linearGradient>
+  </defs>
+  <!-- pad -->
+  <rect x="18" y="126" width="164" height="8" rx="3" fill="#cbd5e1" />
+  <!-- body -->
+  <rect x="28" y="44" width="144" height="82" rx="10" fill={`url(#gb-${uid})`} />
+  <!-- lid seam -->
+  <rect x="28" y="58" width="144" height="4" fill="#000" opacity="0.18" />
+  <!-- vents -->
+  {Array.from({ length: 5 }).map((_, i) => (
+    <rect x={44 + i * 12} y="70" width="6" height="40" rx="3" fill="#000" opacity="0.28" />
+  ))}
+  <!-- control panel -->
+  <rect x="118" y="70" width="42" height="40" rx="4" fill="#0f172a" opacity="0.85" />
+  <circle cx="129" cy="82" r="4" fill={accent} />
+  <rect x="138" y="79" width="14" height="6" rx="2" fill={accent} opacity="0.7" />
+  <rect x="126" y="94" width="26" height="5" rx="2.5" fill="#94a3b8" opacity="0.6" />
+  <!-- exhaust -->
+  <rect x="160" y="26" width="10" height="20" rx="3" fill="#475569" />
+  <!-- badge -->
+  <rect x="28" y="44" width="52" height="14" rx="7" fill={accent} />
+  <text x="54" y="54.5" text-anchor="middle" font-size="9" font-weight="700" fill={body} font-family="system-ui, sans-serif">{m.powerKw} kW</text>
+</svg>
