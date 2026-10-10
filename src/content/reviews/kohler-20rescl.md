@@ -35,5 +35,17 @@ The 200SELS kit includes Kohler's 200A RXT service-entrance ATS with load sheddi
 - **Maintenance:** Oil and filter every 150 hours or annually; air filter and plugs every 300 hours or annually.
 - **Weight:** 500 lb — freight delivery, plan the pad location first.
 
+## How it compares
+
+Against the [Generac 22kW](/generators/generac-guardian-22kw/): the Kohler is quieter (64 vs 67 dB(A) exercise), better enclosed, and usually a few hundred more — but gives up 2 kW on propane and the dealer network density. Against the [Cummins RS20A](/generators/cummins-rs20a/): similar money, similar premium positioning; Kohler wins on noise and residential support, Cummins on raw engineering margins. Against the [Briggs & Stratton 20kW](/generators/briggs-stratton-20kw/): Briggs wins on warranty length (10-year parts), Kohler on refinement and noise.
+
+## The warranty hour-cap caveat
+
+Kohler's 5-year warranty caps at 2,000 hours. For most owners (exercise cycles + occasional outages ≈ 50–100 hrs/year), that's a non-issue — 2,000 hours is decades. But if you're in hurricane or ice-storm country where a single season can add 300+ hours, track your hour meter and know where you stand. Generac's unlimited-hours warranty is the safer fine print for those regions. See [Generac vs Kohler reliability](/posts/generac-vs-kohler-reliability/) for the full comparison.
+
+## Installation notes
+
+The 20RESCL-200SELS kit bundles the 200A RXT service-entrance ATS with load shedding — confirm the listing includes it, as bare-unit listings exist. At 485 lb with a composite base attached, it's freight delivery; plan the pad location with your installer before it arrives. The corrosion-proof enclosure makes it the safest pick for coastal installs, but still verify setback and noise ordinance compliance — 64 dB(A) exercise is quiet, not silent. OnCue Plus setup should be demonstrated at commissioning, not left as homework.
+
 [Check the price of the Kohler 20RESCL on Amazon](amazon:kohler-20rescl)
 
