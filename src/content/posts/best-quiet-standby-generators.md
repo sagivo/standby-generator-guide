@@ -49,4 +49,25 @@ Manufacturers usually quote the exercise-cycle figure (the quiet one) — full-l
 
 A 67 dB(A) unit 30 feet from the property line, exhaust facing away, beats a 64 dB(A) unit tucked under the neighbor's bedroom window. Check your setback requirements and noise ordinance before finalizing placement — some suburbs cap sustained dB(A) at the lot line.
 
+## Exercise noise vs. outage noise: which to optimize
+
+Manufacturers publish two numbers, and buyers routinely compare the wrong ones:
+
+- **Exercise-cycle dB(A):** the 5–12 minute weekly self-test, usually at reduced RPM. This is the number in the big font on the brochure — and the one your neighbors actually hear, 52 times a year, on a schedule.
+- **Full-load dB(A):** the unit working hard during an outage. Louder, but nobody complains during a blackout — and many units never see full load in residential service.
+
+When you compare models, line up exercise-to-exercise and full-load-to-full-load. A unit advertised at "64 dB(A)" might be quoting its exercise whisper while a competitor's "67 dB(A)" is full-load honesty. The [Kohler 20RESCL](/generators/kohler-20rescl/) deserves credit here for publishing its 64 dB(A) exercise figure separately — that's the number that determines whether your neighbor mentions your generator at the block party.
+
+Also remember the logarithmic scale: 70 dB(A) isn't "a bit louder" than 60 — it's roughly **four times** as loud to human perception (every 10 dB ≈ doubling). A 3 dB difference between two models is clearly audible. Don't dismiss small numbers.
+
+## Reducing noise beyond the spec sheet
+
+**Schedule the exercise cycle considerately.** Every modern controller lets you pick the day and time. Midday Saturday beats 7 AM Sunday. Your neighbors will never know it exists if it runs while they're at work.
+
+**Mind the exhaust direction.** The exhaust outlet is the loudest point. Face it away from bedrooms — yours and the neighbors' — and away from the property line where the ordinance is measured.
+
+**Use distance and barriers.** Sound drops ~6 dB every time you double the distance. Going from 10 to 20 feet from the property line is worth more than any enclosure upgrade. Solid fencing or dense evergreen hedging between the unit and the neighbor helps; thin "acoustic blankets" sold online help less than their marketing claims.
+
+**Check the ordinance first.** Some municipalities cap sustained noise at the property line (often 55–65 dB(A) daytime). A unit that's legal at 20 feet might not be at 10. Your installer's quote should account for setback requirements — if it doesn't, ask.
+
 For the full field, see the [best standby generators of 2026](/posts/best-standby-generators-2026/).
